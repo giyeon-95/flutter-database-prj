@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "931665795639",
+    "firebase_url": "https://database-ecc6d.firebaseio.com",
+    "project_id": "database-ecc6d",
+    "storage_bucket": "database-ecc6d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:931665795639:android:36768c5d41d490b3b13db2",
+        "android_client_info": {
+          "package_name": "com.juho.database_pro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "931665795639-h5c9c851labnc43c87ffks0ikmrcjgli.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS9BftPPyzaEbqjJnPEz1xhW3j-vtMSaA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "931665795639-h5c9c851labnc43c87ffks0ikmrcjgli.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
