@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:database_pro/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:database_pro/home_screen.dart';
 
 class RegistrationScreen extends StatefulWidget {
   static const String id = 'registration_screen';
@@ -96,9 +97,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       width: double.infinity,
       child: RaisedButton(
         elevation: 5.0,
-        onPressed: () {
-          print(email);
-          print(password);
+        onPressed: () async {
+          try {
+            final newUser = await _auth.createUserWithEmailAndPassword(
+                email: email, password: password);
+            if (newUser != null) {
+              Navigator.pushNamed(context, HomeScreen.id);
+            }
+          } catch (e) {
+            print(e);
+          }
         },
         padding: EdgeInsets.all(15.0),
         shape: RoundedRectangleBorder(
