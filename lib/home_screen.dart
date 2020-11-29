@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/gestures.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 User loggedInUser;
 
@@ -14,13 +15,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final _auth = FirebaseAuth.instance;
-
-  @override
-  void initState() {
-    super.initState();
-    getCurrentUser();
+  Future<void> _launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@';
+    }
   }
+
+  final _auth = FirebaseAuth.instance;
 
   void getCurrentUser() async {
     try {
@@ -34,14 +37,13 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
-  Future<void> _launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
+  @override
+  void initState() {
+    super.initState();
+    getCurrentUser();
   }
 
+  // ignore: non_constant_identifier_names
   Widget MainCategory(title, url) {
     return Expanded(
       child: GestureDetector(
@@ -74,6 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  // ignore: non_constant_identifier_names
   Widget CategoryCard(title, Icon icon) {
     return Container(
       margin: EdgeInsets.only(left: 10, right: 10, bottom: 15),
@@ -276,7 +279,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               image: AssetImage(
                                 "images/hongik-logo.png",
                               ),
-                              width: 100,
+                              width: 120,
                             ),
                             Text(
                               "30016 세종특별자치시 조치원읍 세종로 2369",
